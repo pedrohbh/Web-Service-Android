@@ -20,7 +20,8 @@ let usuarios = [
     { id: 1, nome: 'joao', senha: '123', email: 'qahsh@ausha.com', data_cadastro: '2017-01-02' },
     { id: 2, nome: 'maria', senha: '123', email: 'qahsh@ausha.com', data_cadastro: '2017-01-02' },
     { id: 3, nome: 'berilhes', senha: 'naoseidaraula', email: 'qahsh@ausha.com', data_cadastro: '2017-01-02' },
-	{ id: 4, nome: 'nulo', senha: 'nulo', email: 'nulo', data_cadastro: '2017-01-02' }
+	{ id: 4, nome: 'nulo', senha: 'nulo', email: 'nulo', data_cadastro: '2017-01-02' },
+	{ id: 5, nome: 'sucesso', senha: 'sucesso', email: 'sucesso', data_cadastro: '2017-01-02' }
 ]
 let carrinhos = [
     {
@@ -42,7 +43,7 @@ let carrinhos = [
         ]
     }
 ]
-
+idContador = 6;
 const app = require('express')();
 const bodyParser = require('body-parser');
 
@@ -51,18 +52,28 @@ app.use(bodyParser.json({ limit: '50mb' }));
 // rota padrão, vai cair ela quando você acessar pelo browser
 app.get('/', (req, res, next) => res.send('ws conectado'))
 
-app.post('/cadastrar/', (req, res, next) => {
+app.get('/cadastrar/:nome/:senha', (req, res, next) => {
     // os dados do corpo da requisição podem ser acessados 
     // em req.body
-    const email = req.body.email;
-    const senha = req.body.senha;
-    const nome = req.body.nome;
-    const data_cadastro = new Date();
-
-    // adiciona na lista de usuários
-    usuarios.push({ email, senha, nome, data_cadastro });
-
-    res.send({ sucesso: true });
+    const email = "kkk@kkkk.com";
+    const senha = req.params.senha;
+    const nome = req.params.nome;
+    const data_cadastro = "2017-01-02";
+	
+	const usuario_nulo = usuarios.filter(u => u.nome == "nulo")[0];
+	const usuario_sucesso = usuarios.filter(u => u.nome == "sucesso")[0];
+	const usuario_encontrado = usuarios.filter(u => u.nome == nome)[0];
+	if ( usuario_encontrado == null )
+	{
+		const id = idContador++;
+		usuarios.push({ id, nome, senha, email, data_cadastro });
+		res.send( usuario_sucesso );
+	}
+	else
+	{
+		res.send( usuario_nulo );
+	}
+    //res.send({ sucesso: true });
 })
 
 app.post('/login/', (req, res, next) => {
