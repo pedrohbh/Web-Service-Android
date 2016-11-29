@@ -19,7 +19,7 @@
 let usuarios = [
     { id: 1, nome: 'joao', senha: '123', email: 'qahsh@ausha.com', data_cadastro: '2017-01-02' },
     { id: 2, nome: 'maria', senha: '123', email: 'qahsh@ausha.com', data_cadastro: '2017-01-02' },
-    { id: 3, nome: 'berilhes', senha: 'naoseidaraula', email: 'qahsh@ausha.com', data_cadastro: '2017-01-02' },
+    { id: 3, nome: 'fernando', senha: 'asd', email: 'qahsh@ausha.com', data_cadastro: '2017-01-02' },
 	{ id: 4, nome: 'nulo', senha: 'nulo', email: 'nulo', data_cadastro: '2017-01-02' },
 	{ id: 5, nome: 'sucesso', senha: 'sucesso', email: 'sucesso', data_cadastro: '2017-01-02' }
 ]
@@ -29,8 +29,8 @@ let carrinhos = [
         id_usuario: 3,
         produtos: [
             { nome: 'faca' },
-            { nome: 'ácido sulfúrico' },
-            { nome: 'plutônio' },
+            { nome: 'feijao' },
+            { nome: 'cerveja' },
             { nome: 'fraldas' }
         ]
     },
